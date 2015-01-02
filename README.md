@@ -2,11 +2,11 @@
 
 A [knife solo](http://matschaffer.github.io/knife-solo/) cookbook of [chef](https://learn.chef.io/) recipes to configure and automate server administration tasks.
 
-# Prerequisites
+## Prerequisites
 
 1. Obtain shell access to a fresh server, perhaps from a service like [Amazon EC2](http://aws.amazon.com/ec2/).
 
-# Configuration
+## Configuration
 
 Trailmix Recipes are modular. Include desired recipes in the node's run list, like so:
 
@@ -20,7 +20,7 @@ Trailmix Recipes are modular. Include desired recipes in the node's run list, li
 }
 ````
 
-# Usage
+## Usage
 
 Administer a server according to knife solo workflow.
 

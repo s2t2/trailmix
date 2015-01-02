@@ -1,6 +1,6 @@
 # Trailmix
 
-A knife solo cookbook of chef recipes to configure and automate server administration tasks.
+A [knife solo](http://matschaffer.github.io/knife-solo/) cookbook of [chef](https://learn.chef.io/) recipes to configure and automate server administration tasks.
 
 # Prerequisites
 

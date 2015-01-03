@@ -1,0 +1,8 @@
+PATH
+  remote: ~/sites/trailmix
+  specs:
+    trailmix (0.1.0)
+
+DEPENDENCIES
+  trailmix (>= 0)
+

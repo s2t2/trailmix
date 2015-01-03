@@ -1,1 +1,10 @@
 site 'http://community.opscode.com/api/v1'
+
+# in development:
+cookbook "trailmix",
+  :path => "~/sites/trailmix"
+
+# in production:
+#cookbook "trailmix",
+#  :git => "https://github.com/s2t2/trailmix",
+#  :ref => "v0.1.0"

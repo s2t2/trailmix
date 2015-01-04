@@ -1,26 +1,14 @@
 # Trailmix Solo
 
-A [chef](https://www.chef.io/chef/) cookbook of recipes to deploy and manage a production environment for one or more [Ruby on Rails](http://guides.rubyonrails.org/) applications.
+A [Chef](https://www.chef.io/chef/) cookbook for deploying a production environment to support one or more [Ruby on Rails](http://guides.rubyonrails.org/) applications and dependencies.
 
 ## Usage
 
-Install gems via [bundler](http://bundler.io/).
+Install gems via [bundler](http://bundler.io/) (`bundle install`).
 
-```` sh
-bundle install
-````
+Install cookbooks via [librarian-chef](https://github.com/applicationsonline/librarian-chef) (`librarian-chef install`).
 
-Install cookbooks via [librarian-chef](https://github.com/applicationsonline/librarian-chef).
-
-```` sh
-librarian-chef install
-````
-
-Place a node configuration file, like *my-node.com.json* into the */nodes* directory, select desired recipes by adding them to the run list, and specify attribute values above the run list.
-
-See the [Recipes](/#recipes) section of this document for a description of recipe functionality, and the attributes [Attributes](/#attributes) section for a comprehensive list of available attributes.
-
-See the [Node Templates](/node_templates) directory for example node configuration files.
+Place a node configuration file into the */nodes* directory. Add desired recipes to the run list, and specify attribute values above the run list.
 
 Deploy node server via [knife solo](https://github.com/matschaffer/knife-solo).
 
@@ -67,15 +55,14 @@ Creates a directory for storing email message file templates. Uploads mail files
 
 The table below represents a comprehensive list of acceptable node attributes.
 
-Key | Datatype | Description | Default Value
+Key | Description | Datatype | Default Value
 --- | --- | --- | ---
-`node["deployer_email_address"]` | String | The email address to be notified upon deployment. | nil
-`node["environment_variables"]` | Object | A container for a list of environment variable key-value pairs. | nil
-`node["applications"]` | Object | A container for a list of applications by name. | nil
-`node["applications"]["APP_NAME"]` | Object | A container for application-specific attributes. Replace `APP_NAME` with the name of your application. | nil
-`node["applications"]["APP_NAME"]["code"]` | Object | A container for attributes related to the application's source code. | nil
-`node["applications"]["APP_NAME"]["code"]["source_url"]` | String | A URL pointing to the application's source repository. | nil
-`node["applications"]["APP_NAME"]["code"]["destination_path"]` | String | A file path pointing to the destination directory on the node where the source code will be stored. | nil
+`node["deployer_email_address"]` | The email address to be notified upon deployment. | String | nil
+`node["environment_variables"]` | A container for a list of environment variable key-value pairs. | Object | nil
+`node["applications"]["APP_NAME"]["code"]["source_url"]` | A URL pointing to the application's source repository. | String | nil
+`node["applications"]["APP_NAME"]["code"]["destination_path"]` | A file path pointing to the destination directory on the node where the source code will be stored. | String | nil
+
+See the [Node Templates](/node_templates) directory for example usage of attributes in a node configuration file.
 
 ## Contributing
 

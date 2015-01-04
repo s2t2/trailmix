@@ -1,3 +1,9 @@
+.DS_Store
+id_rsa
+
 /cookbooks/
 /nodes/
+/site-cookbooks/trailmix-solo/files/default/applications/**/deploy_keys/id_rsa
+/site-cookbooks/trailmix-solo/files/default/applications/**/deploy_keys/id_rsa.pub
+/site-cookbooks/trailmix-solo/files/default/applications/**/deploy_keys/config
 /tmp/librarian/

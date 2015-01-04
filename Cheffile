@@ -1,5 +1,7 @@
 site 'http://community.opscode.com/api/v1'
 
+cookbook "application_ruby"
+
 # in development:
 cookbook "trailmix",
   :path => "~/sites/trailmix"

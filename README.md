@@ -1,16 +1,14 @@
 # Trailmix Solo
 
-A [Chef](https://www.chef.io/chef/) cookbook for deploying a production environment to support one or more [Ruby on Rails](http://guides.rubyonrails.org/) applications and dependencies.
+Configures and deploys a [rails](http://guides.rubyonrails.org/) application server to support one or more applications and associated dependencies.
 
 ## Usage
 
 Install gems via [bundler](http://bundler.io/) (`bundle install`).
 
-Install cookbooks via [librarian-chef](https://github.com/applicationsonline/librarian-chef) (`librarian-chef install`).
+Install [chef](https://www.chef.io/chef/) cookbook dependencies via [librarian-chef](https://github.com/applicationsonline/librarian-chef) (`librarian-chef install`).
 
-Place a node configuration file into the */nodes* directory. Add desired recipes to the run list, and specify attribute values above the run list.
-
-Deploy node server via [knife solo](https://github.com/matschaffer/knife-solo).
+Deploy configuration to a node server via [knife solo](https://github.com/matschaffer/knife-solo).
 
 ```` sh
 knife solo prepare my-node.com
@@ -22,6 +20,8 @@ knife solo cook my-node.com
 Obtain shell access to an Amazon Linux server hosted by [Amazon EC2](http://aws.amazon.com/ec2/). Add an [EBS](http://aws.amazon.com/ebs/) database storage drive to `dev/sdb` during EC2 instance launch wizard configuration.
 
 Obtain deploy keys for one or more github-hosted application source code repositories, and add corresponding .ssh files (*config*, *id_rsa*, and *id_rsa.pub*) to */site-cookbooks/trailmix/files/applications/APP_NAME/deploy_keys/*.
+
+Place a node configuration file into the */nodes* directory. Add desired recipes to the run list, and specify attribute values above the run list.
 
 ## Recipes
 

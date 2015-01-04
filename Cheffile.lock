@@ -27,12 +27,6 @@ SITE
     yum-epel (0.6.0)
       yum (~> 3.0)
 
-PATH
-  remote: ~/sites/trailmix
-  specs:
-    trailmix (0.1.0)
-
 DEPENDENCIES
   application_ruby (>= 0)
-  trailmix (>= 0)
 

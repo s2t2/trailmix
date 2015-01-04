@@ -1,0 +1,25 @@
+Subject: Deployment
+MIME-Version: 1.0
+Content-Type: text/plain
+
+Initiated successful server deployment to <%= node.name %>. Way to go!
+
+<%= "Recipes: #{node['recipes']}" %>
+
+<%= "Roles: #{node['roles']}" %>
+
+<%= "Ohai Time: #{node['ohai_time']}" %>
+
+<%= "Platform: #{node['platform']}" %>
+
+<%= "Platform Version: #{node['platform_version']}" %>
+
+<%= "IP Address: #{node['ipaddress']}" %>
+
+<%= "MAC Address: #{node['macaddress']}" %>
+
+<%= "Fully Qualified Domain Name: #{node['fqdn']}" %>
+
+<%= "Host Name: #{node['hostname']}" %>
+
+<%= "Domain Name: #{node['domain']}" %>

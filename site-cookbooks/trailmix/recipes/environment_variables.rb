@@ -4,7 +4,6 @@
 # Recipe:: environment_variables
 #
 
-
 #environment_variables = ______
 #environment_variables = environment_variables ________
 #

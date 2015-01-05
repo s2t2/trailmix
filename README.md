@@ -1,6 +1,6 @@
 # Trailmix Solo
 
-Configures and deploys a [rails](http://guides.rubyonrails.org/) application server to support one or more applications and associated dependencies.
+Configures a production server and deploys one or more [rails](http://guides.rubyonrails.org/) applications.
 
 ## Usage
 

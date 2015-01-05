@@ -1,13 +1,15 @@
 module TrailmixHelper
   MAIL_FILES_DIRECTORY = "/home/ec2-user/mail_files"
 
-  #RBENV_BUNDLE_COMMAND_PREFIX = "#{node["rbenv"]["root_path"]}/shims/bundle"
-
   APPLICATION_DEPLOY_KEY_FILES = [
     {:name => "id_rsa", :permissions => "0600"},
     {:name => "id_rsa.pub", :permissions => "0644"},
     {:name => "config", :permissions => "0644"}
   ]
+
+  RBENV_ROOT_PATH = node["rbenv"]["root_path"]
+
+  RBENV_BUNDLE_COMMAND_PREFIX = "#{RBENV_ROOT_PATH}/shims/bundle"
 
   #ROOT_MYSQL_CONNECTION = {
   #  :host => "localhost",

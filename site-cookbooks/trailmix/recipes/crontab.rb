@@ -12,7 +12,6 @@ bash "clear the crontab" do
   only_if { File.exist?("/var/spool/cron/ec2-user") }
 end
 
-
 #app["scheduled_rake_tasks"].each do |task_name, task|
 #  cron "schedule execution of #{app_name} rake task #{task_name}" do
 #    hour task["cron_hour"]

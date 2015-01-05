@@ -4,16 +4,21 @@
 # Recipe:: applications
 #
 
+# Check for configured applications.
+
 if node.applications.any?
 
-  # Install git package.
+  # Install git.
 
   package "git"
 
-  node.applications.each do |app_name, app|
-    deploy_keys_directory_path = "/home/ec2-user/.ssh/applications/#{app_name}/deploy_keys"
+  # Deploy each configured application.
 
-    # Create dedicated directory for storing application-specific deploy keys.
+  node.applications.each do |app_name, app|
+
+    # Create directory for storing application-specific deploy keys.
+
+    deploy_keys_directory_path = "/home/ec2-user/.ssh/applications/#{app_name}/deploy_keys"
 
     bash "create ssh sub-directory for #{app_name} deploy keys" do
       user "ec2-user"
@@ -22,7 +27,7 @@ if node.applications.any?
       EOH
     end
 
-    # Place deploy keys onto the node.
+    # Copy deploy key files onto the node.
 
     APPLICATION_DEPLOY_KEY_FILES.each do |file|
       cookbook_file "#{deploy_keys_directory_path}/#{file[:name]}" do
@@ -34,7 +39,7 @@ if node.applications.any?
       end
     end
 
-    # Deploy application source code from github.
+    # Deploy application code from git source.
 
     application app_name do
       owner "ec2-user"
@@ -44,15 +49,19 @@ if node.applications.any?
       deploy_key File.read("#{deploy_keys_directory_path}/id_rsa")
     end
 
-    #app_dir = "#{app["code"]["destination_path"]}/current/"
+    app_dir = "#{app["code"]["destination_path"]}/current/"
 
-    #bash "bundle install rubygems" do
-    #  user "ec2-user"
-    #  cwd app_dir
-    #  code <<-BASH
-    #    #{rbenv_bundle} install
-    #  BASH
-    #end
+    # Install rubygems from application Gemfile.
+
+    bash "bundle install rubygems" do
+      user "ec2-user"
+      cwd app_dir
+      code <<-BASH
+        #{RBENV_BUNDLE_COMMAND_PREFIX} install
+      BASH
+    end
+
+    # Create application database user (with admin privileges).
 
     #mysql_database_user app["database"]["user_name"] do
     #  connection root_mysql_connection
@@ -61,6 +70,8 @@ if node.applications.any?
     #  # database_name app["database"]["name"]
     #  action [:create, :grant]
     #end
+
+    # Prepare application database.
 
     #bash "manage application database" do
     #  user "ec2-user"

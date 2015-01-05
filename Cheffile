@@ -1,3 +1,11 @@
 site 'http://community.opscode.com/api/v1'
 
-cookbook "application_ruby"
+cookbook "application_ruby", path: '.'
+
+# cookbook 'rbenv', :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'master'
+
+# cookbook 'ruby_build', :git => 'https://github.com/fnichol/chef-ruby_build', :ref => 'master'
+
+# cookbook 'mysql'
+
+# cookbook 'database'

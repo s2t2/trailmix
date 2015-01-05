@@ -1,33 +1,30 @@
 # trailmix Cookbook
 
-## Dependencies
-
- + git
- + application_ruby
+Configures a production server and deploys one or more rails applications
 
 ## Recipes
 
-#### trailmix::applications
+#### applications
 
 Deploys application(s) from github-hosted source.
 
-#### trailmix::crontab
+#### crontab
 
 Clears the [crontab](http://crontab.org/). Adds application-specific cron entries to the crontab.
 
-#### trailmix::deployment_message
+#### deployment_message
 
 Sends an email to the deployer upon server deployment. If included in a run list, this recipe should assume the last position.
 
-#### trailmix::environment_variables
+#### environment_variables
 
 Adds global and application-specific environment variables.
 
-#### trailmix::mail
+#### mail
 
 Installs and configures the [sendmail](https://www.freebsd.org/cgi/man.cgi?sendmail%288%29) service, which is pre-installed on Amazon EC2 servers.
 
-#### trailmix::messages
+#### messages
 
 Creates a directory for storing email message file templates. Uploads email message files.
 
@@ -37,8 +34,16 @@ Key | Description | Datatype | Default Value
 --- | --- | --- | ---
 `deployer_email_address` | The email address to be notified upon deployment. | String | nil
 `environment_variables` | A container for a list of environment variable key-value pairs. | Object | nil
-`applications["APP_NAME"]["code"]["source_url"]` | A URL pointing to the application's source repository. | String | nil
-`applications["APP_NAME"]["code"]["destination_path"]` | A file path pointing to the destination directory on the node where the source code will be stored. | String | nil
+`rbenv["root_path"]` | A wrapper for the rbenv root path attribute. | String | "/home/ec2-user/rbenv"
+
+## Application-Specific Attributes
+
+In the table below, `app` refers to `applications["APP_NAME"]`, where `APP_NAME` is the name of your application.
+
+Key | Description | Datatype | Default Value
+--- | --- | --- | ---
+`app["code"]["source_url"]` | A URL pointing to the application's source repository. | String | nil
+`app["code"]["destination_path"]` | A file path pointing to the destination directory on the node where the source code will be stored. | String | nil
 
 ## Contributing
 

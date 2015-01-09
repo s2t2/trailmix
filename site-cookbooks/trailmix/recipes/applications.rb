@@ -12,11 +12,23 @@ if node.applications.any?
 
   package "git"
 
+  # Install ruby.
+
+  include_recipe "trailmix::ruby"
+
+  # Install rubygems.
+
+  include_recipe "trailmix::rubygems"
+
+  # Install and configure mysql.
+
+  include_recipe "trailmix::mysql"
+
   # Deploy each configured application.
 
   node.applications.each do |app_name, app|
 
-    # Create directory for storing application-specific deploy keys.
+    # Create application-specific directory to store deploy keys.
 
     deploy_keys_directory_path = "/home/ec2-user/.ssh/applications/#{app_name}/deploy_keys"
 
@@ -27,7 +39,7 @@ if node.applications.any?
       EOH
     end
 
-    # Copy deploy key files onto the node.
+    # Upload application-specific deploy key files onto the server.
 
     APPLICATION_DEPLOY_KEY_FILES.each do |file|
       cookbook_file "#{deploy_keys_directory_path}/#{file[:name]}" do
@@ -39,7 +51,7 @@ if node.applications.any?
       end
     end
 
-    # Deploy application code from git source.
+    # Deploy application-specific code from git source.
 
     application app_name do
       owner "ec2-user"
@@ -51,7 +63,7 @@ if node.applications.any?
 
     app_dir = "#{app["code"]["destination_path"]}/current/"
 
-    # Install rubygems from application Gemfile.
+    # Install application-specific rubygems from the Gemfile.
 
     bash "bundle install rubygems" do
       user "ec2-user"
@@ -64,7 +76,7 @@ if node.applications.any?
     # Create application database user (with admin privileges).
 
     #mysql_database_user app["database"]["user_name"] do
-    #  connection root_mysql_connection
+    #  connection ROOT_MYSQL_CONNECTION
     #  password app["database"]["user_password"]
     #  privileges ["all"]
     #  # database_name app["database"]["name"]

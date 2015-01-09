@@ -11,11 +11,19 @@ module TrailmixHelper
 
   RBENV_BUNDLE_COMMAND_PREFIX = "#{RBENV_ROOT_PATH}/shims/bundle"
 
-  #ROOT_MYSQL_CONNECTION = {
-  #  :host => "localhost",
-  #  :username => "root",
-  #  :password => node["mysql"]["server_root_password"]
-  #}
+  EBS_FILESYSTEM_DIRECTORY = "/ebs_filesystem"
+
+  DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/data"
+
+  TEMPORARY_DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/tmp"
+
+  SLOW_QUERY_LOG_FILE = "/#{EBS_FILESYSTEM}/logs/mysql/slow.log"
+
+  ROOT_MYSQL_CONNECTION = {
+    :host => "localhost",
+    :username => "root",
+    :password => node["mysql"]["server_root_password"]
+  }
 
   def self.email_address
     "ec2-user@#{node.name}"

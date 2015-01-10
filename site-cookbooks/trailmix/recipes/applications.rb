@@ -14,7 +14,9 @@ if node.applications.any?
 
   # Install ruby and gems.
 
-  include_recipe "trailmix::ruby_and_gems"
+  include_recipe "trailmix::ruby"
+
+  include_recipe "trailmix::rubygems"
 
   # Install and configure mysql.
 

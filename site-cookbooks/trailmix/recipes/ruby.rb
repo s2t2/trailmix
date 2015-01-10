@@ -8,7 +8,10 @@
 
 node.default.rbenv["group_users"] = ["ec2-user"]
 
-# Install ruby.
+include_recipe "rbenv::default"
+include_recipe "rbenv::ruby_build"
+
+# Install ruby and set the global version to be used in all shells.
 
 node.default.ruby_version = "2.2.0"
 

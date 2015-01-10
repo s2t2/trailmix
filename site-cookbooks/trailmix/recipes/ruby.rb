@@ -12,6 +12,7 @@ include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
 # Install ruby and set the global version to be used in all shells.
+#   This step may cause the chef run to hang during initial installation.
 
 node.default.ruby_version = "2.2.0"
 

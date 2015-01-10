@@ -18,6 +18,7 @@ SITE
     passenger_apache2 (2.2.2)
       apache2 (>= 1.0.4)
       build-essential (>= 0.0.0)
+    ruby_build (0.8.0)
     runit (1.5.12)
       build-essential (>= 0.0.0)
       yum (~> 3.0)
@@ -27,6 +28,15 @@ SITE
     yum-epel (0.6.0)
       yum (~> 3.0)
 
+GIT
+  remote: git://github.com/fnichol/chef-rbenv.git
+  ref: v0.7.2
+  sha: f2b53292e810dd2b43f6121f9958f5f29979dcb1
+  specs:
+    rbenv (0.7.2)
+
 DEPENDENCIES
   application_ruby (>= 0)
+  rbenv (>= 0)
+  ruby_build (>= 0)
 

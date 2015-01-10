@@ -12,17 +12,15 @@ if node.applications.any?
 
   package "git"
 
-  # Install ruby.
+  # Install ruby and gems.
 
-  include_recipe "trailmix::ruby"
-
-  # Install rubygems.
-
-  include_recipe "trailmix::rubygems"
+  include_recipe "trailmix::ruby_and_gems"
 
   # Install and configure mysql.
 
-  include_recipe "trailmix::mysql"
+  #RBENV_BUNDLE = "#{node["rbenv"]["root_path"]}/shims/bundle"
+
+  #include_recipe "trailmix::mysql"
 
   # Deploy each configured application.
 
@@ -65,13 +63,13 @@ if node.applications.any?
 
     # Install application-specific rubygems from the Gemfile.
 
-    bash "bundle install rubygems" do
-      user "ec2-user"
-      cwd app_dir
-      code <<-BASH
-        #{RBENV_BUNDLE_COMMAND_PREFIX} install
-      BASH
-    end
+    #bash "bundle install #{app_name} rubygems" do
+    #  user "ec2-user"
+    #  cwd app_dir
+    #  code <<-BASH
+    #    #{RBENV_BUNDLE} install
+    #  BASH
+    #end
 
     # Create application database user (with admin privileges).
 
@@ -89,9 +87,9 @@ if node.applications.any?
     #  user "ec2-user"
     #  cwd app_dir
     #  code <<-BASH
-    #    #{rbenv_bundle} exec rake db:create RAILS_ENV=production &&
-    #    #{rbenv_bundle} exec rake db:migrate RAILS_ENV=production &&
-    #    #{rbenv_bundle} exec rake db:seed RAILS_ENV=production
+    #    #{RBENV_BUNDLE_COMMAND_PREFIX} exec rake db:create RAILS_ENV=production &&
+    #    #{RBENV_BUNDLE_COMMAND_PREFIX} exec rake db:migrate RAILS_ENV=production &&
+    #    #{RBENV_BUNDLE_COMMAND_PREFIX} exec rake db:seed RAILS_ENV=production
     #  BASH
     #end
 
@@ -99,7 +97,7 @@ if node.applications.any?
     #  user "ec2-user"
     #  cwd app_dir
     #  code <<-BASH
-    #    #{rbenv_bundle} exec rake assets:precompile
+    #    #{RBENV_BUNDLE_COMMAND_PREFIX} exec rake assets:precompile
     #  BASH
     #end
   end

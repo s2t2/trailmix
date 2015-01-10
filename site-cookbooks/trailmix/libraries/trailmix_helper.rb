@@ -7,27 +7,19 @@ module TrailmixHelper
     {:name => "config", :permissions => "0644"}
   ]
 
-  RBENV_ROOT_PATH = node["rbenv"]["root_path"]
+  #EBS_FILESYSTEM_DIRECTORY = "/ebs_filesystem"
 
-  RBENV_BUNDLE_COMMAND_PREFIX = "#{RBENV_ROOT_PATH}/shims/bundle"
+  #DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/data"
 
-  EBS_FILESYSTEM_DIRECTORY = "/ebs_filesystem"
+  #TEMPORARY_DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/tmp"
 
-  DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/data"
+  #SLOW_QUERY_LOG_FILE = "/#{EBS_FILESYSTEM}/logs/mysql/slow.log"
 
-  TEMPORARY_DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/tmp"
-
-  SLOW_QUERY_LOG_FILE = "/#{EBS_FILESYSTEM}/logs/mysql/slow.log"
-
-  ROOT_MYSQL_CONNECTION = {
-    :host => "localhost",
-    :username => "root",
-    :password => node["mysql"]["server_root_password"]
-  }
-
-  def self.email_address
-    "ec2-user@#{node.name}"
-  end
+  #ROOT_MYSQL_CONNECTION = {
+  #  :host => "localhost",
+  #  :username => "root",
+  #  :password => node["mysql"]["server_root_password"]
+  #}
 
   def upload_mail_file(mail_file)
     template "#{MAIL_FILES_DIRECTORY}/#{mail_file}" do
@@ -38,5 +30,8 @@ module TrailmixHelper
   end
 end
 
-# allow helper module to access node attributes and invoke chef recipe methods; allow all recipes to access module content.
+# Allow helper module to invoke chef recipe methods; allow all recipes to access module content.
 Chef::Recipe.send(:include, TrailmixHelper)
+
+# How to allow helper to access node attributes?
+# ...

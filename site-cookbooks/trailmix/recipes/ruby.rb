@@ -9,12 +9,16 @@
 node.default.rbenv["group_users"] = ["ec2-user"]
 
 include_recipe "rbenv::default"
+
 include_recipe "rbenv::ruby_build"
 
-# Install ruby and set the global version to be used in all shells.
-#   This step may cause the chef run to hang during initial installation.
+# Install ruby. This step may cause the chef run to hang during initial installation.
 
-node.default.ruby_version = "2.2.0"
+node.default.ruby_version = "2.1.2"
+
+rbenv_command("rehash")
+
+# Set global ruby version to be used in all shells.
 
 rbenv_ruby node["ruby_version"] do
   global true

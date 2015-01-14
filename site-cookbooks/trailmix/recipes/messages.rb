@@ -15,4 +15,4 @@ end
 
 # Upload mail file to be sent during deployment.
 
-upload_mail_file("deployment.txt") if node.recipes.include?("trailmix::deploy")
+upload_mail_file("deployment.txt") if node.recipes.include?("trailmix::deployment_message")

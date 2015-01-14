@@ -65,12 +65,11 @@ if node.applications.any?
 
     # Install application-specific rubygems from the Gemfile.
 
-    bash "bundle install #{app_name} rubygems" do
+    rbenv_execute "bundle install rubygems for #{app_name} app" do
       user "ec2-user"
       cwd app_dir
-      code <<-BASH
-        /bin/bash -l -c '#{node["rbenv"]["root_path"]}/shims/bundle install'
-      BASH
+      command "bundle install"
+      ruby_version node["ruby_version"]
     end
 
     # Create application database user (with admin privileges).

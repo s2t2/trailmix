@@ -20,9 +20,7 @@ if node.applications.any?
 
   # Install and configure mysql.
 
-  #RBENV_BUNDLE = "#{node["rbenv"]["root_path"]}/shims/bundle"
-
-  #include_recipe "trailmix::mysql"
+  # include_recipe "trailmix::mysql"
 
   # Deploy each configured application.
 
@@ -53,25 +51,27 @@ if node.applications.any?
 
     # Deploy application-specific code from git source.
 
+    destination_path = "/home/ec2-user/#{app_name}"
+
     application app_name do
       owner "ec2-user"
       group "ec2-user"
-      path app["code"]["destination_path"]
+      path destination_path
       repository app["code"]["source_url"]
       deploy_key File.read("#{deploy_keys_directory_path}/id_rsa")
     end
 
-    app_dir = "#{app["code"]["destination_path"]}/current/"
+    app_dir = "#{destination_path}/current/"
 
     # Install application-specific rubygems from the Gemfile.
 
-    #bash "bundle install #{app_name} rubygems" do
-    #  user "ec2-user"
-    #  cwd app_dir
-    #  code <<-BASH
-    #    #{RBENV_BUNDLE} install
-    #  BASH
-    #end
+    bash "bundle install #{app_name} rubygems" do
+      user "ec2-user"
+      cwd app_dir
+      code <<-BASH
+        /bin/bash -l -c '#{node["rbenv"]["root_path"]}/shims/bundle install'
+      BASH
+    end
 
     # Create application database user (with admin privileges).
 

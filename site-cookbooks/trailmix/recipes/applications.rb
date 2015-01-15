@@ -20,7 +20,7 @@ if node.applications.any?
 
   # Install and configure mysql.
 
-  # include_recipe "trailmix::mysql"
+  include_recipe "trailmix::mysql"
 
   # Deploy each configured application.
 
@@ -58,7 +58,7 @@ if node.applications.any?
       group "ec2-user"
       path destination_path
       repository app["code"]["source_url"]
-      deploy_key File.read("#{deploy_keys_directory_path}/id_rsa")
+      deploy_key "#{deploy_keys_directory_path}/id_rsa" # File.read("#{deploy_keys_directory_path}/id_rsa")
     end
 
     app_dir = "#{destination_path}/current/"

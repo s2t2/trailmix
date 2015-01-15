@@ -20,13 +20,14 @@ template "update fstab" do
   source "fstab.erb"
   owner "root"
   group "root"
+  variables( :ebs_directory_path => EBS_FILESYSTEM_DIRECTORY )
 end
 
 # Mount filesystem.
 
 bash "mount filesystem unless already mounted" do 
   code <<-EOH
-    if mountpoint {EBS_FILESYSTEM_DIRECTORY}; then echo "FILESYSTEM IS ALREADY MOUNTED."; else mkfs -t ext4 /dev/xvdb && mount /dev/xvdb {EBS_FILESYSTEM_DIRECTORY}/; fi
+    if mountpoint #{EBS_FILESYSTEM_DIRECTORY}; then echo "FILESYSTEM IS ALREADY MOUNTED."; else mkfs -t ext4 /dev/xvdb && mount /dev/xvdb #{EBS_FILESYSTEM_DIRECTORY}/; fi
   EOH
   user "root"
   group "root"

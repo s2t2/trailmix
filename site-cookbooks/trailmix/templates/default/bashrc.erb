@@ -9,6 +9,8 @@ fi
 
 alias ll="ls -lahG"
 
+# eval "$(rbenv init -)"
+
 <% @environment_variables.each do |k,v| %>
 <%= "export #{k.upcase}='#{v}'" %>
 <% end %>

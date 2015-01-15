@@ -7,13 +7,7 @@ module TrailmixHelper
     {:name => "config", :permissions => "0644"}
   ]
 
-  #EBS_FILESYSTEM_DIRECTORY = "/ebs_filesystem"
-
-  #DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/data"
-
-  #TEMPORARY_DATA_DIRECTORY = "/#{EBS_FILESYSTEM_DIRECTORY}/tmp"
-
-  #SLOW_QUERY_LOG_FILE = "/#{EBS_FILESYSTEM}/logs/mysql/slow.log"
+  EBS_FILESYSTEM_DIRECTORY = "/ebs_filesystem"
 
   #ROOT_MYSQL_CONNECTION = {
   #  :host => "localhost",

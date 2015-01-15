@@ -3,5 +3,5 @@ site 'http://community.opscode.com/api/v1'
 cookbook "application_ruby"
 cookbook "ruby_build"
 cookbook "rbenv"
-# cookbook 'mysql'
+cookbook "mysql"
 # cookbook 'database'

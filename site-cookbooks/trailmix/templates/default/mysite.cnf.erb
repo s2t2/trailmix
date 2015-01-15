@@ -1,0 +1,6 @@
+<% @mysql_applications.each do |app_name, app| %>
+[client<%= app_name%>]
+database=<%= app["database"]["name"] %>
+user=<%= app["database"]["user_name"] %>
+password=<%= app["database"]["user_password"] %>
+<% end %>

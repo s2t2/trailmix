@@ -9,6 +9,5 @@ version          '0.1.0'
 depends "application_ruby"
 depends "ruby_build"
 depends "rbenv"
-
-#depends 'mysql'
+depends 'mysql', '~> 6.0'
 #depends 'database'

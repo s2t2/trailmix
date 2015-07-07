@@ -9,6 +9,8 @@ include_recipe "trailmix::messages"
 
 # Send a server deployment details message to the deployer.
 
+raise "PLEASE PROVIDE node.deployer_email_address" unless node["deployer_email_address"]
+
 bash "send deployment message" do
   user "root"
   cwd "/tmp"

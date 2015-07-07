@@ -1,6 +1,6 @@
 # Trailmix Solo
 
-Configures a production server and deploys one or more [rails](http://guides.rubyonrails.org/) applications.
+Configures a production server and deploys a [Ruby on Rails](http://guides.rubyonrails.org/) application.
 
 ## Usage
 
@@ -17,7 +17,13 @@ Subsquent Deploys:
 
 Obtain shell access to an Amazon Linux server hosted by [Amazon EC2](http://aws.amazon.com/ec2/). Add an [EBS](http://aws.amazon.com/ebs/) database storage drive to `dev/sdb` during EC2 instance launch wizard configuration.
 
-Obtain deploy keys for one or more github-hosted source code repositories, and add corresponding .ssh files (*config*, *id_rsa*, and *id_rsa.pub*) to `/site-cookbooks/trailmix/files/applications/APP_NAME/deploy_keys/`.
+Obtain deploy keys for one or more github-hosted source code repositories, and add corresponding .ssh files (*config*, *id_rsa*, and *id_rsa.pub*) to `/site-cookbooks/trailmix/files/deploy_keys/`.
+
+Or generate new deploy keys:
+
+```` sh
+ssh-keygen -t rsa -C "YOUR_EMAIL+deployer@gmail.com" -f site-cookbooks/trailmix/files/default/deploy_keys/id_rsa
+````
 
 Add a node configuration file to the */nodes* directory. Configure attribute values and add recipes to the run list (see [Node Templates](/node_templates) for example usage).
 

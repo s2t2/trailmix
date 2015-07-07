@@ -1,48 +1,11 @@
 {
   "deployer_email_address":"YOUR_EMAIL@gmail.com",
-  "environment_variables":{
-    "RAILS_ENV":"production"
+  "ruby_version":"1.9.3-p484",
+  "application":{
+    "name":"________",
+    "source_url":"______"
   },
-  "applications":{
-    "APP_NAME":{
-      "code":{
-        "source_url":"ssh://git@github.com/GITHUB_USER_NAME/APP_NAME",
-        "destination_path":"/home/ec2-user/APP_NAME"
-      },
-      "environment_variables":{
-        "APP_NAME_APPLICATION_CONFIG_SECRET_KEY_BASE":"some_long_string_hash",
-        "APP_NAME_DATABASE_PASSWORD":"s3cret_pa$$w0rd",
-        "APP_NAME_SERVICE_NAME_OAUTH_SECRET_KEY":"some_secret_key_string"
-      },
-      "database":{
-        "name":"APP_NAME_production",
-        "socket":"/var/lib/mysql/mysql.sock",
-        "user_name":"APP_NAME",
-        "user_password":"s3cret_pa$$w0rd"
-      },
-      "scheduled_rake_tasks":{
-        "NAMESPACED:NAME_OF_RAKE_TASK":{
-          "cron_hour":"07,14,21",
-          "cron_minute":"01",
-          "cron_recipient_email_address":"YOUR_EMAIL@gmail.com"
-        }
-      }
-    },
-    "OTHER_APP_NAME":{
-      "code":{
-        "source_url":"ssh://git@github.com/GITHUB_USER_NAME/OTHER_APP_NAME",
-        "destination_path":"/home/ec2-user/OTHER_APP_NAME"
-      },
-      "database":{
-        "name":"OTHER_APP_NAME_production",
-        "socket":"/var/lib/mysql/mysql.sock",
-        "user_name":"OTHER_APP_NAME",
-        "user_password":"s3cret_pa$$w0rd"
-      }
-    }
-  },
-  "run_list":[
-    "trailmix::applications",
-    "trailmix::deployment_message"
+  "run_list": [
+    "trailmix::applications"
   ]
 }
